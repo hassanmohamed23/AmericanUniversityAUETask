@@ -1,0 +1,40 @@
+﻿@model SignUpViewModel
+
+<form asp-action="SignUp" asp-controller="User" method="post">
+    <div class="form-row">
+        <div class="form-outline mb-4 col-md-6">
+            <label class="form-label" for="firstName">First Name </label>
+            <input asp-for="firstName" type="text" id="firstName" required class="form-control" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-outline mb-4 col-md-6">
+            <label class="form-label" for="lastName">Last Name </label>
+            <input asp-for="lastName" type="text" id="lastName" required class="form-control" />
+        </div>
+    </div>
+      
+
+    <div class="form-row">
+        <div class="form-outline mb-4 col-md-6">
+            <label class="form-label" for="email">Email address</label>
+
+            <input asp-for="email" type="email" id="email" required class="form-control" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-outline mb-4 col-md-6">
+            <label class="form-label" for="password">Password</label>
+            <input asp-for="password" type="password" id="password" required class="form-control" />
+        </div>
+    </div>
+ 
+  
+    <div class="form-row">
+        <div class="form-outline mb-4 col-md-2">
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign Up</button>
+
+        </div>
+    </div>
+
+</form>

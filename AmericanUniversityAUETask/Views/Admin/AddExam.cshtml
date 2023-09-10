@@ -1,0 +1,62 @@
+﻿@using AmericanUniversityAUETask.Entities;
+@model ExamViewModel
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+
+<form asp-action="AddExam" asp-controller="Admin" method="post">
+
+    <div class="form-row">
+        <div class="form-outline mb-4 col-md-6 mb-3">
+            <label class="form-label" for="Title">Title</label>
+            <input type="text" asp-for="title" id="Title" required class="form-control" />
+            <span class="text-danger" asp-validation-for="title"></span>
+
+        </div>
+
+        <div class="form-outline mb-4 col-md-6 mb-3">
+            <label class="form-label" for="Description">Description</label>
+            <input type="text" asp-for="Description" id="Description" required class="form-control" />
+            <span class="text-danger" asp-validation-for="Description"></span>
+
+        </div>
+    
+    </div>
+    <div class="form-row">
+
+    <div class="form-outline mb-4 col-md-2 mb-3">
+        <button type="submit" class="btn btn-primary btn-block mb-4">Create Exam</button>
+    </div>
+    </div>
+  
+
+</form>
+
+@if (Model.examList.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var exam in Model.examList)
+            {
+                <tr>
+                    <th scope="row">@exam.ExamId</th>
+                    <td>@exam.Title</td>
+                    <td>@exam.Description</td>
+                </tr>
+            }
+           
+
+        </tbody>
+    </table>
+}

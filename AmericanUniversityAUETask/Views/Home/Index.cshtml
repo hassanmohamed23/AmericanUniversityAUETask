@@ -1,0 +1,48 @@
+﻿@using AmericanUniversityAUETask.Entities;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Exam>
+
+    <div class="form-row">
+
+        <div class="form-outline mb-4 col-md-6 mb-3">
+            <label for="QuestionType">Question Type</label>
+            <label for="Exam">Exam</label>
+            <select  id="Exam" class="form-control" required>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var exam in Model)
+                    {
+                        <option value="@exam.ExamId"> @exam.Title</option>
+                    }
+                }
+
+            </select>
+        </div>
+
+    </div>
+    <div class="form-row">
+
+        <div class="form-outline mb-4 col-md-2 mb-3">
+            <button  onclick="StartExam()" class="btn btn-primary btn-block mb-4">Start Exam</button>
+        </div>
+    </div>
+
+<script>
+    function StartExam() {
+        var selectedExamId = $("#Exam").val();
+        var pageNumber = 1;
+
+        var queryString = '?id=' + selectedExamId + '&pageNumber=' + pageNumber;
+
+        var url = '/Home/Exam' + queryString;
+
+        window.location.href = url;
+    }
+</script>
+
+
+
+

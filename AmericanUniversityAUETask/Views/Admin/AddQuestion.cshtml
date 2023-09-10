@@ -1,0 +1,113 @@
+﻿@model QuestionViewModel
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>@TempData["SuccessMessage"]</strong>
+    </div>
+}
+
+
+<form asp-action="AddQuestion" asp-controller="Admin" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Exam">Exam</label>
+            <select asp-for="question.ExamId" id="Exam" class="form-control" required>
+                @if (Model.examList.Count()>0)
+                {
+                    @foreach (var exam in Model.examList)
+                    {
+                        <option value="@exam.ExamId"> @exam.Title</option>
+                    }
+                }
+             
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="QuestionType">Question Type</label>
+            <select id="QuestionType" asp-for="question.QuestionType" class="form-control" required>
+                @if (Model.examList.Count() > 0)
+                {
+                    @foreach (var type in Model.questionTypeList)
+                    {
+                        <option value="@type.Id"> @type.QuestionTypeName</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Question">Question</label>
+            <input asp-for="question.QuestionText" type="text" class="form-control" required placeholder="Write your Question">
+        </div>
+    </div>
+ 
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Option1">Option 1</label>
+            <input asp-for="question.Option1" type="text" required class="form-control">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Option2">Option 2</label>
+            <input asp-for="question.Option2" type="text" required class="form-control">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6" id="Option3">
+            <label for="Option3">Option 3</label>
+            <input asp-for="question.Option3" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6" id="Option4">
+            <label for="Option4">Option 4</label>
+            <input asp-for="question.Option4" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="CorrectAnswer">Correct Answer</label>
+            <input asp-for="question.CorrectAnswer" type="number" id="CorrectAnswer" min="1" max="4" class="form-control">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Score">Score</label>
+            <input asp-for="question.Score" id="Score" type="number" min="1" class="form-control">
+        </div>
+    </div>
+    <div class="form-row">
+        <button type="submit" class="btn btn-primary col-md-2">Create Question</button>
+
+    </div>
+   
+</form>
+
+<script>
+    function toggleOptions() {
+        var questionTypeSelect = document.getElementById("QuestionType");
+        var option3Input = document.getElementById("Option3");
+        var option4Input = document.getElementById("Option4");
+
+        if (questionTypeSelect.value === "2") {
+            option3Input.style.display = "none";
+            option4Input.style.display = "none";
+        } else {
+            option3Input.style.display = "block";
+            option4Input.style.display = "block";
+        }
+    }
+
+    // Attach the toggleOptions function to the change event of the Question Type select.
+    document.getElementById("QuestionType").addEventListener("change", toggleOptions);
+
+    // Call the function initially to set the initial state.
+    toggleOptions();
+</script>
+

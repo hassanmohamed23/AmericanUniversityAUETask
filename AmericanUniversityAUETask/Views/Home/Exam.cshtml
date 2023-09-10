@@ -1,0 +1,93 @@
+﻿@model StudentExamViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Online Exam</h1>
+
+        <!-- Question Container -->
+        <div class="question-container mt-4">
+            <!-- Question 1 -->
+            @if(Model.question!=null)
+            {
+                <form asp-action="Exam" asp-controller="Home" method="post">
+                    <input type="hidden" asp-for="examId" name="examId" value="@Model.examId">
+                    <input type="hidden" asp-for="questionId" name="questionId" value="@Model.question.QuestionId">
+                    <input type="hidden" asp-for="pageNumber" name="pageNumber" value="@Model.pageNumber">
+                    <div class="card question-card">
+                        <div class="card-header">
+                            Question @Model.pageNumber
+                        </div>
+                        <div class="card-body">
+                            <p>@Model.question.QuestionText</p>
+                            <div class="form-check">
+                                <input class="form-check-input" asp-for="selectedOption" type="radio" name="selectedOption" id="q1_option1" required value="1">
+                                <label class="form-check-label" for="q1_option1">
+                                @Model.question.Option1
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" asp-for="selectedOption" type="radio" name="selectedOption" id="q1_option2" required value="2">
+                                <label class="form-check-label" for="q1_option2">
+                                @Model.question.Option2
+                                </label>
+                            </div>
+                            @if (Model.question.QuestionType == (int)Enums.QuestionType.MultiChoose)
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" asp-for="selectedOption" type="radio" name="selectedOption" id="q1_option3" required value="3">
+                                    <label class="form-check-label" for="q1_option3">
+                                        @Model.question.Option3
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" asp-for="selectedOption" type="radio" name="selectedOption" id="q1_option4" required value="4">
+                                    <label class="form-check-label" for="q1_option4">
+                                    @Model.question.Option4
+                                    </label>
+                                </div>
+                            }
+                            
+                        </div>
+
+
+                        <div class="text-center mt-4">
+@*                            @if (Model.pageNumber > 1)
+                            {
+                                <a class="btn btn-primary" href="@Url.Action("Exam","Home", new { id=Model.examId ,pageNumber = Model.pageNumber - 1 })">Previous</a>
+                            }*@
+                            <span id="question-number">@Model.pageNumber of @Model.totalPages</span>
+                            @if (Model.pageNumber < Model.totalPages)
+                            {
+@*                                <a class="btn btn-primary" href="@Url.Action("Exam","Home", new {id=Model.examId , pageNumber = Model.pageNumber + 1 })">Next</a>
+*@
+                                  <button type="submit" class="btn btn-primary" >Next</button>
+                           }
+                            @if (Model.pageNumber == Model.totalPages)
+                            {
+                                <a class="btn btn-primary" href="@Url.Action("Grade","Home", new {examId=Model.examId})">Submit</a>
+                            }
+                        </div>
+                    </div>
+
+                </form>
+            }
+       
+
+          
+        </div>
+    </div>
+
+   
+</body>
+</html>
+
+

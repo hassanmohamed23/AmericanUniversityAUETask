@@ -1,0 +1,32 @@
+﻿@model SignInViewModel
+<form asp-action="SignIn" asp-controller="User" method="post">
+
+    <div class="form-row">
+        <div class="form-outline mb-4 col-md-6">
+            <label class="form-label" for="form2Example1">Email address</label>
+            <input type="email" asp-for="email" id="form2Example1" required class="form-control" />
+            <span class="text-danger" asp-validation-for="email"></span>
+
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-outline mb-4 col-md-6">
+            <label class="form-label" for="form2Example2">Password</label>
+            <input type="password" asp-for="password" id="form2Example2" required class="form-control" />
+            <span class="text-danger" asp-validation-for="email"></span>
+
+        </div>
+    </div>
+  
+    <div class="form-row text-center">
+        <div class="form-outline mb-4 col-md-2 ">
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign In</button>
+        </div>
+    </div>
+
+  
+    <div >
+        <p>Not a member? <a asp-action="SignUp" asp-controller="User">Register</a></p>
+    </div>
+</form>

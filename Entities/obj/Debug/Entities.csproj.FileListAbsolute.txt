@@ -1,0 +1,6 @@
+D:\AmericanUniversityAUETask\Entities\bin\Debug\Entities.dll
+D:\AmericanUniversityAUETask\Entities\bin\Debug\Entities.pdb
+D:\AmericanUniversityAUETask\Entities\obj\Debug\Entities.csproj.AssemblyReference.cache
+D:\AmericanUniversityAUETask\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
+D:\AmericanUniversityAUETask\Entities\obj\Debug\Entities.dll
+D:\AmericanUniversityAUETask\Entities\obj\Debug\Entities.pdb

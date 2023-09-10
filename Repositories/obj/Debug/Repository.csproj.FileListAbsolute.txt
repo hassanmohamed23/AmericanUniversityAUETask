@@ -1,0 +1,6 @@
+D:\AmericanUniversityAUETask\Repositories\bin\Debug\Repositories.dll
+D:\AmericanUniversityAUETask\Repositories\bin\Debug\Repositories.pdb
+D:\AmericanUniversityAUETask\Repositories\obj\Debug\Repository.csproj.AssemblyReference.cache
+D:\AmericanUniversityAUETask\Repositories\obj\Debug\Repository.csproj.CoreCompileInputs.cache
+D:\AmericanUniversityAUETask\Repositories\obj\Debug\Repositories.dll
+D:\AmericanUniversityAUETask\Repositories\obj\Debug\Repositories.pdb
